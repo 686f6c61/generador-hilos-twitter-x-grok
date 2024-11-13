@@ -9,6 +9,7 @@
 Una aplicación web en Flask que genera hilos de tweets personalizados usando el modelo Grok de X.AI.
 
 [Características](#características) •
+[Demo](#demo) •
 [Instalación](#instalación) •
 [Uso](#uso) •
 [Documentación](#documentación) •
@@ -16,11 +17,74 @@ Una aplicación web en Flask que genera hilos de tweets personalizados usando el
 
 </div>
 
+## 🎯 Características Principales
+
+### 📝 Generación de Contenido
+- **Tema Principal**: Define el tema central de tu hilo
+- **Contexto Adicional**: Añade información complementaria para mejor contexto
+- **Número de Tweets**: Elige entre 2 y 20 tweets para tu hilo
+- **Estilos de Escritura Disponibles**:
+  - 👔 Formal y Profesional
+  - 💬 Casual y Conversacional
+  - 😄 Humorístico
+  - 😏 Sarcástico
+  - 📚 Educativo
+  - 💪 Inspirador y Motivacional
+  - 🔬 Técnico y Detallado
+  - 📖 Narrativo (Storytelling)
+
+### 🎨 Personalización
+
+#### Hashtags
+- **Modo Automático**: Añade hashtags a todos los tweets
+- **Modo Personalizado**: Selecciona en qué tweets específicos incluir hashtags
+- **Modo Desactivado**: Sin hashtags
+
+#### Emojis
+- **Modo Completo**: Incluye emojis en todos los tweets
+- **Modo Selectivo**: Elige tweets específicos para incluir emojis
+- **Modo Desactivado**: Sin emojis
+
+### 🌓 Interfaz
+- Tema claro/oscuro
+- Diseño responsive
+- Copiado rápido de tweets
+- Previsualización de estilos
+
+## 📸 Demo
+
+### Vista General
+![Vista General](static/img/screenshots/general.png)
+*Vista completa de la aplicación*
+
+
+### Opciones de Hashtags
+![Hashtags](static/img/screenshots/hashtags.png)
+*Configuración de hashtags*
+
+### Opciones de Emojis
+![Emojis](static/img/screenshots/emojis.png)
+*Configuración de emojis*
+
+### Resultado
+![Resultado](static/img/screenshots/result.png)
+*Ejemplo de hilo generado*
+
 ## 📋 Tabla de Contenidos
 
 - [🧵 Generador de Hilos para X.com con Grok](#-generador-de-hilos-para-xcom-con-grok)
+  - [🎯 Características Principales](#-características-principales)
+    - [📝 Generación de Contenido](#-generación-de-contenido)
+    - [🎨 Personalización](#-personalización)
+      - [Hashtags](#hashtags)
+      - [Emojis](#emojis)
+    - [🌓 Interfaz](#-interfaz)
+  - [📸 Demo](#-demo)
+    - [Vista General](#vista-general)
+    - [Opciones de Hashtags](#opciones-de-hashtags)
+    - [Opciones de Emojis](#opciones-de-emojis)
+    - [Resultado](#resultado)
   - [📋 Tabla de Contenidos](#-tabla-de-contenidos)
-  - [🎯 Características](#-características)
   - [⚙️ Instalación](#️-instalación)
     - [Requisitos Previos](#requisitos-previos)
     - [Configuración](#configuración)
@@ -31,15 +95,6 @@ Una aplicación web en Flask que genera hilos de tweets personalizados usando el
     - [Estructura del Proyecto](#estructura-del-proyecto)
   - [🤝 Contribuir](#-contribuir)
   - [📄 Licencia](#-licencia)
-
-## 🎯 Características
-
-- ✨ **Generación IA**: Hilos personalizados usando Grok
-- 🎨 **Estilos Múltiples**: Formal, casual, humorístico, educativo y más
-- 🏷️ **Hashtags Inteligentes**: Añade hashtags relevantes automáticamente
-- 😊 **Emojis Contextuales**: Integración natural de emojis
-- 🌓 **Tema Claro/Oscuro**: Interfaz adaptable
-- 📱 **Responsive**: Funciona en todos los dispositivos
 
 ## ⚙️ Instalación
 
