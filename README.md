@@ -70,31 +70,6 @@ Una aplicación web en Flask que genera hilos de tweets personalizados usando el
 ![Resultado](static/img/screenshots/result.png)
 
 
-## 📋 Tabla de Contenidos
-
-- [🧵 Generador de Hilos para X.com con Grok](#-generador-de-hilos-para-xcom-con-grok)
-  - [🎯 Características Principales](#-características-principales)
-    - [📝 Generación de Contenido](#-generación-de-contenido)
-    - [🎨 Personalización](#-personalización)
-      - [Hashtags](#hashtags)
-      - [Emojis](#emojis)
-    - [🌓 Interfaz](#-interfaz)
-  - [📸 Demo](#-demo)
-    - [Vista General](#vista-general)
-    - [Opciones de Hashtags](#opciones-de-hashtags)
-    - [Opciones de Emojis](#opciones-de-emojis)
-    - [Resultado](#resultado)
-  - [📋 Tabla de Contenidos](#-tabla-de-contenidos)
-  - [⚙️ Instalación](#️-instalación)
-    - [Requisitos Previos](#requisitos-previos)
-    - [Configuración](#configuración)
-  - [🚀 Uso](#-uso)
-  - [🔧 Tecnologías](#-tecnologías)
-  - [📖 Documentación](#-documentación)
-    - [API de Grok](#api-de-grok)
-    - [Estructura del Proyecto](#estructura-del-proyecto)
-  - [🤝 Contribuir](#-contribuir)
-  - [📄 Licencia](#-licencia)
 
 ## ⚙️ Instalación
 
