@@ -55,20 +55,20 @@ Una aplicación web en Flask que genera hilos de tweets personalizados usando el
 
 ### Vista General
 ![Vista General](static/img/screenshots/general.png)
-*Vista completa de la aplicación*
+
 
 
 ### Opciones de Hashtags
 ![Hashtags](static/img/screenshots/hashtags.png)
-*Configuración de hashtags*
+
 
 ### Opciones de Emojis
 ![Emojis](static/img/screenshots/emojis.png)
-*Configuración de emojis*
+
 
 ### Resultado
 ![Resultado](static/img/screenshots/result.png)
-*Ejemplo de hilo generado*
+
 
 ## 📋 Tabla de Contenidos
 
