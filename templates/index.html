@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de hilos X.com</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-mode.css') }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+</head>
+<body>
+    <!-- Theme Toggle y GitHub Link -->
+    <div class="top-controls">
+        <a href="https://github.com/686f6c61/generador-hilos-twitter-x-grok" 
+           class="github-link" 
+           target="_blank" 
+           rel="noopener noreferrer">
+            <i class="mdi mdi-github"></i>
+            GitHub
+        </a>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider">
+                    <span class="mdi mdi-weather-sunny"></span>
+                    <span class="mdi mdi-weather-night"></span>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">
+                Generador de hilos X.com
+            </h1>
+            <h2 class="subtitle has-text-centered">
+                Crea hilos con Grok
+            </h2>
+
+            <div class="columns is-centered">
+                <div class="column is-half">
+                    <form id="threadForm" method="POST">
+                        <!-- Card de tema y contexto -->
+                        <div class="option-card">
+                            <h4 class="card-title">
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="mdi mdi-text-box-outline"></i>
+                                    </span>
+                                    <span>Contenido del hilo</span>
+                                </span>
+                            </h4>
+                            
+                            <div class="field mb-4">
+                                <label class="label">Tema del hilo 
+                                    <button class="help-button" data-tooltip="Escribe el tema principal sobre el que quieres crear el hilo">
+                                        <i class="mdi mdi-help-circle-outline"></i>
+                                    </button>
+                                </label>
+                                <div class="control">
+                                    <input class="input" type="text" name="tema" placeholder="Ej: Cómo la inteligencia artificial está cambiando el marketing digital" required>
+                                </div>
+                                <div class="example-tooltip">
+                                    Otros ejemplos:
+                                    <ul>
+                                        <li>• 5 técnicas de productividad basadas en neurociencia</li>
+                                        <li>• Por qué el blockchain revolucionará la logística</li>
+                                        <li>• Guía para invertir en bolsa siendo principiante</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Contexto adicional
+                                    <button class="help-button" data-tooltip="Añade información relevante para orientar mejor el contenido">
+                                        <i class="mdi mdi-help-circle-outline"></i>
+                                    </button>
+                                </label>
+                                <div class="control">
+                                    <textarea class="textarea" name="contexto" placeholder="Ej: Enfocado a emprendedores que quieren automatizar sus procesos de marketing. Incluir casos prácticos y herramientas específicas."></textarea>
+                                </div>
+                                <div class="example-tooltip">
+                                    Ejemplos de contexto:
+                                    <ul>
+                                        <li>• Audiencia: principiantes en tecnología, usar analogías sencillas</li>
+                                        <li>• Incluir: estadísticas recientes y casos de éxito</li>
+                                        <li>• Enfoque: práctico con pasos accionables</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card de número de tweets -->
+                        <div class="option-card">
+                            <h4 class="card-title">
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="mdi mdi-twitter"></i>
+                                    </span>
+                                    <span>Número de tweets</span>
+                                </span>
+                            </h4>
+                            
+                            <div class="tweet-count-selector">
+                                <button type="button" class="count-btn decrease">
+                                    <i class="mdi mdi-minus"></i>
+                                </button>
+                                <input type="number" name="num_tweets" value="5" min="2" max="20" class="tweet-count-input">
+                                <button type="button" class="count-btn increase">
+                                    <i class="mdi mdi-plus"></i>
+                                </button>
+                                <span class="tweet-count-help">mín: 2 - máx: 20</span>
+                            </div>
+                        </div>
+
+                        <!-- Card de estilo -->
+                        <div class="option-card">
+                            <h4 class="card-title">
+                                <span class="icon-text">
+                                    <span class="icon">
+                                        <i class="mdi mdi-format-paint"></i>
+                                    </span>
+                                    <span>Estilo del hilo</span>
+                                </span>
+                            </h4>
+                            
+                            <div class="control">
+                                <div class="select is-fullwidth">
+                                    <select name="estilo" id="estiloSelector">
+                                        {% for key, value in estilos.items() %}
+                                        <option value="{{ key }}">{{ value.nombre }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div id="estiloInfo" class="mt-3">
+                                <div class="estilo-box">
+                                    <div class="estilo-descripcion">
+                                        <p><span class="tag is-primary is-light">Descripción</span></p>
+                                        <p id="estiloDescripcion" class="mt-2"></p>
+                                    </div>
+                                    <div class="estilo-ejemplo mt-3">
+                                        <p><span class="tag is-primary is-light">Ejemplo</span></p>
+                                        <p id="estiloEjemplo" class="mt-2"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field options-section">
+                            <label class="label">Opciones Adicionales</label>
+                            
+                            <div class="option-group">
+                                <h4 class="option-title">
+                                    <span class="icon-text">
+                                        <span class="icon">
+                                            <i class="mdi mdi-pound"></i>
+                                        </span>
+                                        <span>Hashtags</span>
+                                    </span>
+                                </h4>
+                                
+                                <div class="control mb-4">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" name="usar_hashtags" checked>
+                                        <span class="toggle-slider"></span>
+                                        <span class="toggle-label">Incluir hashtags</span>
+                                    </label>
+                                </div>
+
+                                <div id="hashtagsOptions" class="sub-options">
+                                    <div class="option-selector mb-4">
+                                        <label class="toggle-switch">
+                                            <input type="radio" name="hashtags_mode" value="all" checked>
+                                            <span class="toggle-slider"></span>
+                                            <span class="toggle-label">Todos los tweets</span>
+                                        </label>
+                                        <label class="toggle-switch">
+                                            <input type="radio" name="hashtags_mode" value="custom">
+                                            <span class="toggle-slider"></span>
+                                            <span class="toggle-label">Seleccionar específicos</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div id="hashtagTweetSelector" class="tweet-selector hidden">
+                                        <p class="selector-label">Selecciona los tweets para hashtags:</p>
+                                        <div class="tweet-numbers"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="option-group">
+                                <h4 class="option-title">
+                                    <span class="icon-text">
+                                        <span class="icon">
+                                            <i class="mdi mdi-emoticon"></i>
+                                        </span>
+                                        <span>Emojis</span>
+                                    </span>
+                                </h4>
+                                
+                                <div class="control mb-4">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" name="usar_emojis" checked>
+                                        <span class="toggle-slider"></span>
+                                        <span class="toggle-label">Incluir emojis</span>
+                                    </label>
+                                </div>
+
+                                <div id="emojisOptions" class="sub-options">
+                                    <div class="option-selector mb-4">
+                                        <label class="toggle-switch">
+                                            <input type="radio" name="emojis_mode" value="all" checked>
+                                            <span class="toggle-slider"></span>
+                                            <span class="toggle-label">Todos los tweets</span>
+                                        </label>
+                                        <label class="toggle-switch">
+                                            <input type="radio" name="emojis_mode" value="custom">
+                                            <span class="toggle-slider"></span>
+                                            <span class="toggle-label">Seleccionar específicos</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div id="emojiTweetSelector" class="tweet-selector hidden">
+                                        <p class="selector-label">Selecciona los tweets para emojis:</p>
+                                        <div class="tweet-numbers"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control is-flex is-justify-content-center">
+                                <button class="button is-primary generate-button" type="submit">
+                                    Generar hilo
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="loading has-text-centered" style="display: none;">
+                        <button class="button is-loading">Generando...</button>
+                    </div>
+
+                    <div id="result" style="display: none;">
+                        <h3 class="title is-4 has-text-white">Tu hilo</h3>
+                        <div class="tweets-container">
+                            <!-- Los tweets se añadirán aquí -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="copyNotification" class="notification">
+        <span class="icon">
+            <i class="mdi mdi-check-circle"></i>
+        </span>
+        <span>Tweet copiado al portapapeles</span>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script>
+        // Pasar variables de Flask a JavaScript
+        const estilos = {{ estilos|tojson|safe }};
+    </script>
+</body>
+</html> 

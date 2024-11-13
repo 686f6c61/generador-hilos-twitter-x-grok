@@ -1,0 +1,729 @@
+:root {
+    /* Light theme */
+    --primary-color: #1DA1F2;
+    --primary-hover: #1991db;
+    --background-color: #FFFFFF;
+    --text-color: #000000;
+    --border-color: #E1E8ED;
+    --box-background: #F5F8FA;
+    --text-secondary: #666;
+    --primary-light: rgba(29, 161, 242, 0.1);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.title, .subtitle, .label {
+    color: var(--text-color) !important;
+}
+
+.box {
+    background-color: var(--box-background);
+    color: var(--text-color);
+}
+
+.button.is-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.button.is-primary:hover {
+    background-color: var(--primary-hover) !important;
+}
+
+.tweet-box {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.tweet-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tweet-box::after {
+    content: "Click para copiar";
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+}
+
+.tweet-box:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tweet-content {
+    position: relative;
+}
+
+.tweet-text {
+    margin: 0;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.copy-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-button:hover {
+    background: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    display: none;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Estilos para las opciones adicionales */
+.options-section {
+    background: var(--options-background);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.option-group {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.option-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.option-title .icon {
+    color: var(--primary-color);
+}
+
+.sub-options {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.toggle-switch:hover {
+    background-color: var(--hover-background);
+}
+
+.toggle-slider {
+    position: relative;
+    width: 48px;
+    height: 24px;
+    background-color: var(--toggle-background);
+    border-radius: 24px;
+    margin-right: 12px;
+    transition: all 0.3s ease;
+}
+
+.toggle-slider:before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background-color: var(--primary-color);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(24px);
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.toggle-label {
+    color: var(--text-color);
+}
+
+/* Radio Buttons */
+.radio-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.radio-button:hover {
+    background-color: var(--hover-background);
+}
+
+.radio-button input {
+    opacity: 0;
+    position: absolute;
+}
+
+.radio-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.radio-custom:before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s ease;
+}
+
+.radio-button input:checked + .radio-custom:before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-custom:before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s ease;
+}
+
+.radio-button input:checked + .radio-custom:before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Estilos para las opciones de hashtags */
+.select-tweets-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.tweet-selector {
+    background: var(--background-color);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.selector-label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.tweet-numbers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.tweet-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.tweet-number:hover {
+    border-color: var(--primary-color);
+}
+
+.tweet-number.selected {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Estilos para el selector de densidad de emojis */
+.emoji-density-control {
+    margin-top: 1rem;
+}
+
+.density-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.density-label {
+    margin-left: 0.5rem;
+    color: var(--text-color);
+}
+
+.radio {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.radio input[type="radio"] {
+    margin-right: 0.5rem;
+}
+
+/* Estilos para modo oscuro */
+[data-theme="dark"] .tweet-selector {
+    background: var(--dark-option-background);
+}
+
+/* Estilos para la sección de ejemplos */
+.estilo-box {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.estilo-descripcion, 
+.estilo-ejemplo {
+    color: var(--text-color);
+}
+
+.tag.is-primary.is-light {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+/* Estilos para los campos y ayudas */
+.field-group {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.help-button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.help-button:hover {
+    color: var(--primary-hover);
+}
+
+.example-tooltip {
+    display: none;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.example-tooltip ul {
+    margin-top: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.example-tooltip li {
+    margin-bottom: 0.3rem;
+    color: var(--text-secondary);
+}
+
+/* Variables adicionales */
+:root {
+    --text-secondary: #666;
+}
+
+[data-theme="dark"] {
+    --text-secondary: #999;
+}
+
+/* Estilos para el selector de número de tweets */
+.tweet-count-field {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.tweet-count-field .label {
+    margin: 0;
+    min-width: 120px;
+}
+
+.tweet-count-selector {
+    display: flex;
+    align-items: center;
+    background: var(--background-color);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.count-btn {
+    background: var(--background-color);
+    border: none;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.count-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.tweet-count-input {
+    width: 50px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    padding: 0.5rem;
+    background: var(--background-color);
+    color: var(--text-color);
+    -moz-appearance: textfield;
+}
+
+.tweet-count-input::-webkit-outer-spin-button,
+.tweet-count-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.tweet-count-help {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* Estilos para las cards */
+.option-card {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.option-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card-title .icon {
+    color: var(--primary-color);
+}
+
+/* Estilos actualizados para el selector de tweets */
+.tweet-count-selector {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.count-btn {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.count-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.tweet-count-input {
+    width: 60px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.5rem;
+    background: var(--background-color);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.tweet-count-help {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Variables de color actualizadas */
+:root {
+    --card-shadow: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+    --card-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para los tweets */
+.tweet-box {
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.tweet-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tweet-box::after {
+    content: "Click para copiar";
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+}
+
+.tweet-box:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tweet-content {
+    position: relative;
+}
+
+.tweet-text {
+    margin: 0;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Efecto de copiado */
+.tweet-copied {
+    background: var(--primary-light);
+    border-color: var(--primary-color);
+}
+
+/* Notificación de copiado */
+#copyNotification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.show-notification {
+    animation: slideIn 0.3s forwards;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para los controles superiores */
+.top-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+
+.github-link {
+    position: absolute;
+    right: 100px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.theme-switch-wrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.github-link:hover {
+    background: var(--hover-background);
+    color: var(--primary-color);
+}
+
+.github-link .mdi {
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .github-link {
+        right: 80px;
+    }
+}
+
+/* Estilo para el botón de generar */
+.generate-button {
+    width: auto; /* En lugar de fullwidth */
+    min-width: 200px; /* Ancho mínimo */
+    padding: 0 2rem; /* Padding horizontal */
+    margin: 0 auto; /* Centrado */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .generate-button {
+        width: 100%; /* Fullwidth en móviles */
+    }
+}
+ 

@@ -1,0 +1,180 @@
+/* Variables del tema */
+:root {
+    /* Light theme */
+    --background-color: #FFFFFF;
+    --text-color: #000000;
+    --border-color: #E1E8ED;
+    --box-background: #F5F8FA;
+    --primary-color: #1DA1F2;
+    --primary-hover: #1991db;
+    --text-secondary: #666;
+    --options-background: #f8f9fa;
+    --option-group-background: #ffffff;
+    --toggle-background: #e2e8f0;
+    --hover-background: rgba(0, 0, 0, 0.05);
+    --card-shadow: rgba(0, 0, 0, 0.05);
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --background-color: #15202B;
+    --text-color: #FFFFFF;
+    --border-color: #38444D;
+    --box-background: #192734;
+    --primary-color: #1DA1F2;
+    --primary-hover: #1991db;
+    --text-secondary: #8899A6;
+    --options-background: #192734;
+    --option-group-background: #22303c;
+    --toggle-background: #38444d;
+    --hover-background: rgba(255, 255, 255, 0.05);
+    --card-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Theme Switch Styles */
+.theme-switch-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6px;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.theme-switch input:checked + .slider {
+    background-color: #1DA1F2;
+}
+
+.theme-switch input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider .mdi {
+    color: #fff;
+    font-size: 16px;
+    z-index: 1;
+}
+
+.slider .mdi-weather-sunny {
+    margin-left: 2px;
+}
+
+.slider .mdi-weather-night {
+    margin-right: 2px;
+}
+
+/* Ajustes específicos para modo oscuro */
+[data-theme="dark"] .option-card,
+[data-theme="dark"] .tweet-box,
+[data-theme="dark"] .input,
+[data-theme="dark"] .textarea,
+[data-theme="dark"] .select select {
+    background-color: var(--box-background);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .title,
+[data-theme="dark"] .subtitle,
+[data-theme="dark"] .label {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .button.is-primary {
+    background-color: var(--primary-color) !important;
+    color: white;
+}
+
+[data-theme="dark"] .tweet-box:hover {
+    box-shadow: 0 4px 12px var(--card-shadow);
+}
+
+[data-theme="dark"] .example-tooltip {
+    background-color: var(--box-background);
+    border-color: var(--border-color);
+}
+
+/* Ajustes para placeholders en modo oscuro */
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: #8899A6 !important;
+    opacity: 0.8;
+}
+
+[data-theme="dark"] .input,
+[data-theme="dark"] .textarea {
+    background-color: var(--box-background);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .input:hover,
+[data-theme="dark"] .textarea:hover {
+    border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .input:focus,
+[data-theme="dark"] .textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.125em rgba(29, 161, 242, 0.25);
+}
+
+[data-theme="dark"] .example-tooltip {
+    background-color: var(--box-background);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .example-tooltip ul li {
+    color: var(--text-secondary);
+}
+
+/* Añadir estos estilos al archivo dark-mode.css */
+[data-theme="dark"] .github-link {
+    background: var(--box-background);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .github-link:hover {
+    background: var(--hover-background);
+    color: var(--primary-color);
+} 
